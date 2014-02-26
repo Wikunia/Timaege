@@ -1,5 +1,9 @@
 $(function(){
 	
+	// The URL, where this project is hosted
+	var BASEURL = "http://img.wikunia.de";
+	
+	// Eventhandler for choosing a file
 	$("#chooseBild").change(function(e){
 		handleUpload(e.target.files[0]);
 	});
@@ -33,7 +37,7 @@ $(function(){
 					$.post("save.php", {"data" : encrypted}, function(ID){
 						
 						// console.log("Generiere Link...");
-						console.log("http://img.wikunia.de/" + ID + "&" + pw);
+						console.log(BASEURL + "/s/#" + ID + "&" + pw);
 						
 					})
 					
