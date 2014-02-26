@@ -2,53 +2,53 @@ $(function(){
 	
 	// The URL, where this project is hosted
 	var BASEURL = "http://img.wikunia.de";
+	// Element, where the link will be posted
+	var linkBox = $('#link');
 	
 	// Eventhandler for choosing a file
-	$("#chooseBild").change(function(e){
+	$("#chooseImage").change(function(e){
 		handleUpload(e.target.files[0]);
 	});
-	
-	
+
 	function handleUpload(target){
 		loadImage(
 			target,
 			function (canvas) {
 				if(canvas.type === "error") {
-					// Bei einem Fehler eine Fehlermeldung ausgeben
+					// Error handling
 					console.log("Error loading image!");
 				} else {
 					
-					// Bild auf der Seite anzeigen
+					// Show the image on the page
 					document.body.appendChild(canvas);
 					
-					console.log("Generiere Passwort...");
-					// Passwort generieren
-					// Da keine Länge spezifiziert ist, wird ein Passwort
-					// zwischen 10 und 15 Zeichen generiert.
+					console.log("Generating password...");
+					// Generate a password with 10 to 15 characters
 					var pw = Password.generate();
 					
-					console.log("Wandle Bild um...");
+					console.log("Image processing...");
 					var dataURL = canvas.toDataURL('image/png');
 					
-					console.log("Verschluessele Bild...");
+					console.log("Encrypting image...");
 					var encrypted = sjcl.encrypt(pw, dataURL);
 					
-					// console.log("Sende Bild zum Server...");
+					console.log("Send image to server...");
 					$.post("save.php", {"data" : encrypted}, function(ID){
 						
-						// console.log("Generiere Link...");
-						console.log(BASEURL + "/s/#" + ID + "&" + pw);
+						console.log("Generating link...");
+						var link = BASEURL + "/s/#" + ID + "&" + pw;
+						linkBox.text(link);
 						
 					})
 					
-		        }
-		        
-		    },
-		    {
-		        maxWidth: 1000,
-		        maxHeight: 1000,
-		        canvas: true
-		    }
+				}
+
+			},
+			{
+				maxWidth: 1000,
+				maxHeight: 1000,
+				canvas: true
+			}
 		);
 	}
 	

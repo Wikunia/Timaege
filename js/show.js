@@ -1,6 +1,6 @@
 $(function(){
 	
-	console.log("Extrahiere Informationen aus URL...");
+	console.log("Extract information from URL...");
 	
 	var hash = window.location.hash.substr(1),
 		info = hash.split("&"),
@@ -8,19 +8,18 @@ $(function(){
 		key = info[1],
 		img = $("#image");
 	
-	console.log("Rufe Daten ab...");
+	console.log("Get data...");
 	
 	$.getJSON("../images/" + id + ".json", function(data){
 		
 		data = JSON.stringify(data);
 		
-		console.log("Dekodiere Daten...");
+		console.log("Decrypt data...");
 		var base = sjcl.decrypt(key, data);
 		
-		console.log("Zeige Bild an...");
+		console.log("Showing image...");
 		img.attr("src", base);
 		
 	})
-	
 	
 })
