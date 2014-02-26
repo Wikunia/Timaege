@@ -33,7 +33,7 @@ $(function(){
 					$.post("save.php", {"data" : encrypted}, function(ID){
 						
 						// console.log("Generiere Link...");
-						console.log("http://img.wikunia.de/" + ID + "/" + pw);
+						console.log("http://img.wikunia.de/" + ID + "&" + pw);
 						
 					})
 					

@@ -10,7 +10,7 @@ $(function(){
 	
 	console.log("Rufe Daten ab...");
 	
-	$.getJSON("images/" + id + ".json", function(data){
+	$.getJSON("../images/" + id + ".json", function(data){
 		
 		data = JSON.stringify(data);
 		
