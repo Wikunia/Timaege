@@ -2,11 +2,28 @@
 <html>
 <head>
 	<title>Tim&aelig;ge</title>
+	<link rel="stylesheet" href="css/style.css" type="text/css" />
 </head>
 <body>
 	
 	<input type="file" id="chooseImage" accept="image/*" />
-	<span id="link"></span>
+	
+	<div class="spacer"></div>
+	
+	<div id="container">
+		<div id="drop" class="">
+			<div id="load" data-text="LOAD">DROP</div>
+			<div id="send" data-text="SEND">FILE</div>
+			<div id="done" data-text="DONE">HERE</div>
+		</div>
+		<div id="rest">
+		    <div id="or">&mdash; or &mdash;</div>	
+    		<a id="picker" href="#">choose file</a>
+		</div>
+		
+	</div>
+	
+	<input type="text" id="link">
 	
 	<script src="js/zepto.min.js" type="text/javascript"></script>
 	<script src="js/sjcl.js" type="text/javascript"></script>

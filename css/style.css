@@ -1,0 +1,96 @@
+*{
+	padding:0;
+	margin:0;
+	
+	box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	
+	font-family: "Lucida Console", Monaco, monospace;
+}
+
+html,body{
+	text-align: center;
+	width: 100%;
+	height: 100%;
+    
+    background: #ecf0f1;
+    background: -webkit-radial-gradient(#ecf0f1, #d6ecf1);
+}
+
+.spacer{
+	height: 25%;
+}
+
+#drop{
+	line-height: 90%;
+	letter-spacing: 0.1em;
+	font-size: 5em;
+	/*color: #aaa;*/
+	color: #000e25;
+}
+
+#link{
+    display: block;
+    
+    padding: 5px;
+    width: 100%;
+    
+    border: none;
+    outline: none;
+    
+    font-size: 100%;
+    text-align: center;
+    background: transparent;
+}
+
+#or{
+	padding: 5px;
+	color: #68828e;
+}
+
+#picker{
+	display: inline-block;
+	
+	text-decoration: none;
+	padding: 10px 15px;
+	background: #0083be;
+	color: white;
+	
+	-webkit-transition: .2s background ease;
+	-moz-transition: .2s background ease;
+	transition: .2s background ease;
+}
+#picker:hover{
+	background: #5aa0ff;
+}
+
+/* hiding file input */
+#chooseImage{
+	position: absolute;
+	top: -200px;
+}
+
+/* removing the rest */
+.vanish{
+    visibility: hidden;
+    opacity: 0;
+    -webkit-transition: visibility 0s 1s, opacity 1s linear;
+}
+
+/* PROGRESS ANIMATION */
+.progress{
+	-webkit-transform-origin: 50% 50%;
+
+	-webkit-animation: wiggle 1s ease;
+	-webkit-animation-iteration-count: infinite;
+	-webkit-animation-direction: alternate;
+}
+
+@-webkit-keyframes wiggle{
+	0% {opacity: 0.5;
+		-webkit-transform: scale(1);}
+	100% {opacity: 1;
+		-webkit-transform: scale(1.01);}
+}
+
+
