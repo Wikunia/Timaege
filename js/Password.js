@@ -1,111 +1,109 @@
 /**************************************
  * 
- *   Bietet statische Methoden zum
- *   Erzeugen, Überprüfen und Arbeiten
- *   mit Passwörtern an.
+ *   Static methods for generating,
+ *   checking and working with
+ *   random passwords.
  * 
  *   ------------------------------
  * 
- *   Geschrieben von
+ *   Written by
  *     Konstantin Kobs
- *     1. Dezember 2013
+ *     starting 2013-12-01
  * 
  * ***********************************/
 function Password(){
   
 }
 
-// Bei keiner angegebenen Länge in der generate-Funktion
-// wird ein Passwort mit zufälliger Länge erzeugt.
-// min und max geben hier die minimale und maximale Länge
-// dieses Passwortes an.
+// If no length is specified in the generate-function
+// then a password with a random length will be generated.
+// min and max are integers for the minimum and maximum
+// length of this password.
 Password.min = 10;
 Password.max = 15;
 
-// Die möglichen Zeichen in dem Passwort
+// Possible characters in passwords
 Password.chars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789-_";
 
 /**************************************
  * 
- *   Generiert ein zufälliges Passwort
- *   aus den gegebenen Zeichen
+ *   Generates a random password out of
+ *   the specified characters
  * 
- *   Beispiel eines Aufrufs:
+ *   Example:
  *     alert(Password.generate(30));
+ *   for a password with 30 characters
  * 
  *   ---------------------------------
  * 
- *   laenge : Die gewünschte Länge des Passwortes
+ *   length : length of the generated password
  * 
- *   Liefert einen String mit dem Passwort
+ *   Returns a string with the password
  * 
  * ***********************************/
-Password.generate = function( laenge ){
+Password.generate = function( length ){
   
-  // Ist die Länge nicht angegeben, so wird eine zufällige Länge generiert.
-  laenge = (typeof laenge === "undefined") ? randLength(Password.min, Password.max) : laenge;
+  // if no length is set, we will generate a random length
+  length = (typeof length === "undefined") ? randInt(Password.min, Password.max) : length;
   
-  // Am Anfang ist das Passwort leer
+  // at the beginning, our password is empty
   var password = "";
   
-  // Jedes Zeichen wird einzeln bestimmt,
-  // damit das auch wirklich eine
-  // zufällige Reihenfolge vorliegt
-  for(var i = 0; i < laenge; i++){
+  // this will be a random sequence,
+  // so every character in our password
+  // will be picked individually
+  for(var i = 0; i < length; i++){
     
-    // Wir generieren einen zufälligen Index
-    // für den String mit allen zulässigen
-    // Zeichen
-    var randomPos = Math.random() * (this.chars.length + 1);
+    // generate a random position in our
+    // possible character string
+    var randomPos = randInt(0, this.chars.length - 1);
     
-    // Wir holen uns das Zeichen an dieser Stelle
-    // aus unserem "zulässige Zeichen"-String
+    // get the char at this position from our
+    // possible character string
     var c = this.chars.charAt(randomPos);
     
-    // Wir hängen das Zeichen an die vorher
-    // schon generierten Zeichen
+    // append character to already
+    // generated string
     password += c;
   }
   
-  // Gib das Passwort als String zurück
+  // return the password
   return password;
   
 };
 
 /**************************************
  * 
- *   Gibt einen zufälligen Integer
- *   zwischen min und max aus.
+ *   Returns a random integer between
+ *   min and max
  *   
  *   ---------------------------------
  * 
- *   min : Kleinste mögliche Zahl
- *   max : Größte mögliche Zahl
+ *   min : lowest possible integer
+ *   max : highest possible integer
  * 
- *   Gibt einen Integer mit der zufälligen Zahl zurück
+ *   Returns an integer with the random number
  * 
  * ***********************************/
-function randLength(min, max){
+function randInt(min, max){
 	return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 
 /********************************************
  * 
- *   Überprüft, ob ein Passwort nur aus Zeichen
- *   besteht, die zugelassen sind.
+ *   checks a password for valid characters
  * 
  *   ---------------------------------------
  * 
- *   pw : Der String, der überprüft werden soll
+ *   pw : the password, which will be checked
  * 
- *   Liefert true, wenn der String aus den
- *   zugelassenen Zeichen besteht, uns false,
- *   wenn nicht.
+ *   returns true, when the password uses only
+ *   specified characters and false if not.
  * 
  * *****************************************/
-Password.check = function(pw){
+Password.check = function( pw ){
   
-  // Wir gehen jedes Zeichen des übergebenen Strings durch
+  // for every character in the password
   for(var i = 0; i < pw.length; i++){
     
     // Befindet sich das Zeichen in dem String von
