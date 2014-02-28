@@ -81,4 +81,27 @@ $(function(){
         $('#rest').addClass("vanish");
     }
     
+    
+    
+    // Drag and Drop functionality on page
+    $("body").on("dragover", function(e){
+        e.stopPropagation();
+        e.preventDefault();
+		$('#drop').addClass("dragover");
+	});
+    
+    $("body").on("dragleave", function(e){
+        e.stopPropagation();
+        e.preventDefault();
+		$('#drop').removeClass("dragover");
+	});
+    
+    $("body").on("drop", function(e){
+        e.stopPropagation();
+        e.preventDefault();
+        $('#drop').removeClass("dragover");
+		handleUpload(e.dataTransfer.files[0]);
+	});
+    
+    
 })
