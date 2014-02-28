@@ -1,13 +1,17 @@
 #Timæge
 > A secure image upload service
 
+![upload page](documentation/uploadpage.png)
+
 ##What is Timæge
 Timæge is a secure image upload service. It uses AES to encrypt an image before uploading it to the server. Then you will get a link, which is the only way to access the uploaded image.
 
-In the future, we will add a "self-destruction mode" where you can set a time for how long will the image be accessible.
+In the future, we will add a "self-destruction mode" where you can set a time for how long the image will be accessible.
 
 Nobody exept someone with the right link can access the image. Even the server doesn't know the key or receive any decrpted data. Everything is done on the client side.
 
+##Warning
+This project is in early development. Don't use it for production! It is not safe and have many bugs!
 
 ##What we use
 We use some awesome libraries for processing, generating, encrypting and manipulating:
