@@ -2,6 +2,10 @@
 
 	// Pfad zum Bilder-Ordner
 	$path = "images/";
+    if (!is_dir($path)) {
+       mkdir($path); 
+    }
+
 	// Dateiendung
 	$ext = ".json";
 
