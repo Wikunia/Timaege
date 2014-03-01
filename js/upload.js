@@ -46,16 +46,16 @@ $(function(){
 					var encrypted = sjcl.encrypt(pw, dataURL);
 					
 					console.log("Send image to server...");
-					$.post("save.php", {data : encrypted}, function(ID){
-						
-                        // Change third text
-                        startProgress($('#done'));
-                        
-						console.log("Generating link...");
-						var link = BASEURL + "/s/#" + ID + "&" + pw;
-						linkBox.val(link);
-						
-					})
+					$.post("save.php", {data : encrypted},
+                           function(ID){
+                                // Change third text
+                                startProgress($('#done'));
+
+                                console.log("Generating link...");
+                                var link = BASEURL + "/s/#" + ID + "&" + pw;
+                                linkBox.val(link);
+                            }
+                    )
 					
 				}
 
