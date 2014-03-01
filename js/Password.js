@@ -106,20 +106,18 @@ Password.check = function( pw ){
   // for every character in the password
   for(var i = 0; i < pw.length; i++){
     
-    // Befindet sich das Zeichen in dem String von
-    // zugelassenen Zeichen?
+    // Is the character a possible and valid character?
     var inValid = this.chars.indexOf(pw.charAt(i)) !== -1;
     
-    // Wenn nicht, ist der String kein zugelassenes
-    // Passwort. Wenn ja, mache weiter.
+    // If not, the password is not valid.
     if(!inValid){
       return false;
     }
     
   }
   
-  // Durchlaufen wir alle Zeichen des Passworts
-  // ohne Fehler, so ist das Passwort gültig.
+  // If we go through the entire string without
+  // returning false, then the password is valid
   return true;
   
 };
