@@ -6,9 +6,12 @@
 ##What is Timæge
 Timæge is a secure image upload service. It uses AES to encrypt an image before uploading it to the server. Then you will get a link, which is the only way to access the uploaded image.
 
-In the future, we will add a "self-destruction mode" where you can set a time for how long the image will be accessible.
 
 Nobody exept someone with the right link can access the image. Even the server doesn't know the key or receive any decrpted data. Everything is done on the client side.
+
+##Self-destruction mode
+You can set a time for how long the image will be accessible in the delete.php ($hours).
+Add this file to your cronjob list, so the images will be deleted automatically.
 
 ##Warning
 This project is in early development. Don't use it for production! It is not safe and have many bugs!
@@ -20,6 +23,7 @@ We use some awesome libraries for processing, generating, encrypting and manipul
 - [sjcl](https://github.com/bitwiseshiftleft/sjcl) for encryption
 - [JavaScript Load Image](https://github.com/blueimp/JavaScript-Load-Image) for processing and manipulating the image data
 - [Password.js](https://github.com/konstantinkobs/Password.js) for generating secure passwords
+
 
 ##License (MIT)
 Copyright (c) 2014 Konstantin Kobs
